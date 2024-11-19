@@ -8,7 +8,7 @@ var config = {
         value: 1.98,
         type: "multiplier",
         label: "Bust limit",
-    },
+    }
 };
 
 var bet = config.bet.value;
