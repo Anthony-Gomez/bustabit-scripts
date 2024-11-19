@@ -1,5 +1,5 @@
 var config = {
-    wager: {
+    bet: {
         value: 1,
         type: "balance",
         label: "Initial bet",
@@ -11,9 +11,9 @@ var config = {
     },
 };
 
-var wager = config.wager.value;
+var bet = config.bet.value;
 
-// Try to wagered immediately when script starts
+// Try to bet immediately when script starts
 if (engine.gameState === "GAME_STARTING" || engine.gameState === "GAME_ENDED") {
     makeBet();
 }
@@ -28,8 +28,8 @@ function onGameStarted() {
 }
 
 function makeBet() {
-    engine.bet(wager, config.payout.value);
-    log("Placing bet", wager / 100);
+    engine.bet(bet, config.payout.value);
+    log("Placing bet", bet / 100);
 }
 
 function onGameEnded() {
@@ -43,12 +43,12 @@ function onGameEnded() {
     if (lastGame.cashedAt) {
         // win
         log("✅ Bust ", lastGame.bust, ">", config.payout.value)
-        wager = config.wager.value;
-        log("Next bet", wager / 100)
+        bet = config.bet.value;
+        log("Next bet", bet / 100)
     } else {
         // lost
         log("❌ Bust", lastGame.bust, "<", config.payout.value)
-        wager = wager * 2;
-        log("Next wager", wager / 100)
+        bet = bet * 2;
+        log("Next bet", bet / 100)
     }
 }
